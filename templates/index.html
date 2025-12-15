@@ -37,7 +37,7 @@
                             <p class="step-label">{{ vocab.html.step_1 | default('Choose your festive color theme:') | safe }}</p>
                             <div class="step-options" id="colorThemeOptions">
                                 <!-- Christmas Theme -->
-                                <div class="option-card" data-option="christmas">
+                                <div class="option-card" data-option="xmas">
                                     <p class="option-card-title">Christmas Theme</p>
                                     <div class="color-swatches">
                                         <div class="color-swatch" style="background: #870505;"></div>
@@ -115,7 +115,7 @@
                                 </div>
                                 <p class="option-divider">or</p>
                                 <!-- Brand Elements -->
-                                <div class="option-card" data-option="brand_elements">
+                                <div class="option-card" data-option="brand">
                                     <p class="option-card-title">Brand Elements</p>
                                     <div class="element-icon">
                                         <img src="{{ url_for('static', filename='images/sweater/brand_icon.svg') }}" alt="Brand Elements">
@@ -215,9 +215,11 @@
             
             let selections = {
                 colorTheme: null,
-                knitStyle: null,
                 visualElements: null
             };
+
+            const downloadUrls = {{ download_urls | tojson }};
+            console.log('Download URLs:', downloadUrls);
 
             optionCards.forEach(card => {
                 card.addEventListener('click', function() {
@@ -241,33 +243,50 @@
                     }
                     
                     // Enable button if all selections made
-                    if (selections.colorTheme && selections.knitStyle && selections.visualElements) {
+                    if (selections.colorTheme && selections.visualElements) {
                         generateButton.disabled = false;
                     }
                 });
             });
 
             generateButton.addEventListener('click', function() {
-                if (selections.colorTheme && selections.knitStyle && selections.visualElements) {
-                    // Send request to backend
-                    fetch('/predict', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').content
-                        },
-                        body: JSON.stringify(selections)
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.status === 'success') {
-                            // Download the generated image
-                            window.location.href = data.data.download_url;
+                console.log('Button clicked!');
+                console.log('Selections:', selections);
+                console.log('Color theme:', selections.colorTheme);
+                console.log('Visual elements:', selections.visualElements);
+                
+                if (selections.colorTheme && selections.visualElements) {
+                    const color = selections.colorTheme;
+                    const icon = selections.visualElements;
+                    
+                    console.log('Looking up:', color, icon);
+                    console.log('downloadUrls object:', downloadUrls);
+                    console.log('downloadUrls[color]:', downloadUrls[color]);
+                    
+                    if (downloadUrls[color] && downloadUrls[color][icon]) {
+                        console.log('Redirecting to:', downloadUrls[color][icon]);
+                        window.location.href = downloadUrls[color][icon];
+                    } else {
+                        console.error('Download URL not found for:', color, icon);
+                        console.error('Available colors:', Object.keys(downloadUrls));
+                        if (downloadUrls[color]) {
+                            console.error('Available icons for', color, ':', Object.keys(downloadUrls[color]));
                         }
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                    });
+                    }
+                } else {
+                    console.warn('Missing selections - color:', selections.colorTheme, 'icon:', selections.visualElements);
+                    
+                    if (!selections.colorTheme) {
+                        const colorOptions = document.getElementById('colorThemeOptions');
+                        colorOptions.classList.add('shake-animation');
+                        setTimeout(() => colorOptions.classList.remove('shake-animation'), 500);
+                    }
+                    
+                    if (!selections.visualElements) {
+                        const iconOptions = document.getElementById('visualElementOptions');
+                        iconOptions.classList.add('shake-animation');
+                        setTimeout(() => iconOptions.classList.remove('shake-animation'), 500);
+                    }
                 }
             });
         });

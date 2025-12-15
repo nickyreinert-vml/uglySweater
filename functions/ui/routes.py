@@ -44,6 +44,17 @@ def build_ui_blueprint(ui_controller, auth_manager, limiter, rate_limits) -> Blu
         """
         return ui_controller.download_report(session)
 
+    @blueprint.route("/download_background")
+    def download_background():
+        """Serve background image based on query params.
+        Purpose: return customized background file for download.
+        Input Data: request args with color, knit, elements params.
+        Output Data: background image file response.
+        Process: call ui_controller.serve_background_download.
+        Dependent Functions and Classes: UIController.serve_background_download.
+        """
+        return ui_controller.serve_background_download(request)
+
     @blueprint.route("/peekaboo")
     @auth_manager.require_auth
     def peekaboo():

@@ -4,10 +4,35 @@
         "language_routes": {
             "localhost": "en"
         },
+        "color_sets": ["xmas", "brand"],
+        "icons": ["snowflakes", "trees", "brand"],
+        "default_team": "vml",
         "hero_backgrounds": {
-            "default": "images/hero/hero_aida.png",
-            "aida": "images/hero/hero_aida.png",
-            "msft": "images/hero/hero_msft.png"
+            "_default": "images/hero/hero_default.png",
+            "aida": "hero_AIDA.png",
+            "als": "hero_ALANGEASOEHNE.png",
+            "ajobs": "hero_AMAZON JOBS.png",
+            "aalexa": "hero_AMAZONALEXA.png",
+            "bayer": "hero_BAYER RADIOLOGY.png",
+            "centerparcs": "hero_CENTERPARCS.png",
+            "centrum": "hero_CENTRUM.png",
+            "deichmann": "hero_DEICHMANN.png",
+            "fitnessfirst": "hero_FITNESSFIRST.png",
+            "ford": "hero_FORD.png",
+            "haleon": "hero_HALEON.png",
+            "hero_aida": "hero_hero_aida.png",
+            "hero_msft": "hero_hero_msft.png",
+            "juvederm": "hero_JUVEDERM.png",
+            "koerber": "hero_KOERBER.png",
+            "leger": "hero_LEGER.png",
+            "mezzo": "hero_MEZZO.png",
+            "microsoft": "hero_MICROSOFT.png",
+            "rbk": "hero_RBK.png",
+            "siemensfire": "hero_SIEMENSFIRE.png",
+            "valser": "hero_VALSER.png",
+            "vio": "hero_VIO.png",
+            "zeiss": "hero_ZEISS.png",
+            "vml": "hero_MEZZO.png"
         },
         "i18n_file": "i18n.json"
     },

@@ -76,6 +76,9 @@ class ConfigLoader:
             "download_url": os.getenv("DOWNLOAD_URL", app_cfg.get("download_url", "")),
             "language_routes": self._parse_lang_routes(app_cfg.get("language_routes", {})),
             "hero_backgrounds": self._build_backgrounds(app_cfg.get("hero_backgrounds", {})),
+            "color_sets": app_cfg.get("color_sets", []),
+            "icons": app_cfg.get("icons", []),
+            "default_team": app_cfg.get("default_team", "vml"),
             "i18n_file": app_cfg.get("i18n_file", "i18n.json"),
             "log_db": os.getenv("LOG_DB", db_cfg.get("log_path", "logs.db")),
         }
