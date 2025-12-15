@@ -1,0 +1,270 @@
+/*
+footer.css
+Purpose:
+- Style the global footer reused across pages.
+Main Sections:
+- Layout, typography, responsive behaviors.
+Dependent Files:
+- Loaded by templates/index.html.
+*/
+
+#site-footer {
+    position: relative;
+    background: #000;
+    padding: 2rem 0 3rem;
+    overflow: hidden;
+    color: #fff;
+}
+
+footer {
+    display: block;
+    unicode-bidi: isolate;
+
+}
+
+#site-footer .footer-section {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    height: 100%;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    margin: 0 auto;
+    padding: 0 5.5555555556vw;
+
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 2rem;
+
+}
+
+#site-footer .footer-middle {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    color: #fff;
+    padding-top: 3rem;
+    z-index: 2;
+}
+
+#site-footer .footer-middle .footer-links {
+    width: 100%;
+}
+
+footer div {
+    display: block;
+    unicode-bidi: isolate;
+}
+
+footer ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+    unicode-bidi: isolate;
+}
+
+#site-footer .footer-middle .footer-links ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#site-footer .footer-middle .footer-links ul.nav-secondary li {
+    font-size: 1rem;
+    margin: 1.2rem .8rem .8rem 0;
+}
+
+
+
+li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+    unicode-bidi: isolate;
+}
+
+#site-footer .footer-middle .footer-links ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#site-footer .footer-middle .footer-links ul.nav-secondary li button.link.optanon-toggle-display {
+    font-weight: 400;
+    text-transform: none;
+}
+
+#site-footer .footer-middle .footer-links ul li a, #site-footer .footer-middle .footer-links ul li button {
+    color: #fff;
+}
+
+.button.link, button.link {
+    padding: 0;
+    background-color: transparent;
+    display: inline-block;
+    font-family: SnowflakeSans, Arial, sans-serif;
+}
+
+.button:not(.disabled), .button:not([disabled]), button:not(.disabled), button:not([disabled]) {
+    cursor: pointer;
+}
+
+footer button {
+    border: none;
+}
+
+#footer .button, button {
+    position: relative;
+    display: block;
+    text-align: center;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+#site-footer .footer-middle .footer-links ul.nav-main {
+    letter-spacing: 3.2px;
+    padding-bottom: 1rem;
+}
+
+#site-footer .footer-middle .footer-links ul:first-of-type {
+    text-transform: uppercase;
+}
+#site-footer .footer-middle .footer-links ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+footer ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+    unicode-bidi: isolate;
+}
+
+#site-footer .footer-middle .footer-links ul.nav-main li {
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 0 3.3rem 1rem 0;
+}
+
+footer li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+    unicode-bidi: isolate;
+}
+
+#site-footer .footer-middle .footer-links ul li.bold-link a {
+    border: none;
+    -webkit-clip-path: inset(0 3.2px 0 0);
+    clip-path: inset(0 3.2px 0 0);
+    display: block;
+}
+
+#site-footer .footer-middle .footer-links ul li a, #site-footer .footer-middle .footer-links ul li button {
+    color: #fff;
+}
+
+footer a {
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+#site-footer .future-bottom {
+    z-index: 2;
+}
+
+
+#site-footer .footer-bottom h3 a {
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+    -ms-flex-flow: wrap;
+    flex-flow: wrap;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    text-decoration: none;
+    border-bottom: 2px solid #fff;
+    display: inline-block;
+}
+
+footer * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Snowflake Sans', sans-serif;
+}
+
+footer h3 {
+    display: block;
+    font-size: 1.17em;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+    unicode-bidi: isolate;
+}
+
+.footer-background-icon {
+    opacity: 0.8;
+    position: absolute;
+    background: url("/static/images/background_icon_snowflake.png");
+    width: 100%;
+    height: 100%;
+    background-size: 25%;
+    background-repeat: no-repeat;
+    background-position-x: 50rem;
+    background-position-y: 21rem;
+    z-index: 1;
+}
+
+@media (max-width: 768px) {
+    #site-footer .footer-middle {
+        flex-direction: column;
+        gap: 1rem;
+        padding-top: 1.25rem;
+    }
+    #site-footer .footer-middle .footer-links ul.nav-main {
+        display: block;
+        margin-bottom: 1rem;
+    }
+    #site-footer .footer-bottom h3 {
+        font-size: 0.95rem;
+    }
+    .footer-background-icon {
+        background-size: 50%;
+        background-position-x: center;
+        background-position-y: 10rem;
+        opacity: 0.05;
+    }
+}
+
+@media (min-width: 769px) {
+    #site-footer .footer-middle .footer-links ul.nav-main {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+    }
+
+}
+
+

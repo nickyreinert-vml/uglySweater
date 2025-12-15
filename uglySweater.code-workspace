@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"github.copilot.chat.localeOverride": "en",
+		"github.copilot.chat.commitMessageGeneration.instructions": {
+			"text": "Always generate commit messages in English, regardless of the project's language or other settings."
+		}
+	}
+}

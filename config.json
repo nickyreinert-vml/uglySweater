@@ -1,0 +1,64 @@
+{
+    "app": {
+        "download_url": "",
+        "language_routes": {
+            "localhost": "en"
+        },
+        "hero_backgrounds": {
+            "default": "images/sweater/hero_bg.jpg"
+        },
+        "i18n_file": "i18n.json"
+    },
+    "sweater": {
+        "color_themes": {
+            "christmas": {
+                "name": "Christmas Theme",
+                "colors": ["#870505", "#094539", "#FFFFFF"]
+            },
+            "brand": {
+                "name": "Brand Colors",
+                "colors": ["#C12413", "#DF5C10", "#FAD427"]
+            }
+        },
+        "knit_styles": {
+            "chunky": {
+                "name": "Chunky Knit",
+                "image": "images/sweater/chunky_knit.jpg"
+            },
+            "fair_isle": {
+                "name": "Fair Isle Knit",
+                "image": "images/sweater/fair_isle.jpg"
+            },
+            "tacky": {
+                "name": "Tacky Knit",
+                "image": "images/sweater/tacky_knit.jpg"
+            }
+        },
+        "visual_elements": {
+            "snowflakes": {
+                "name": "Snowflakes",
+                "icon": "images/sweater/snowflake_icon.svg"
+            },
+            "trees": {
+                "name": "Fir Trees",
+                "icon": "images/sweater/tree_icon.svg"
+            },
+            "brand": {
+                "name": "Brand Elements",
+                "icon": "images/sweater/brand_icon.svg"
+            }
+        }
+    },
+    "database": {
+        "log_path": ".vault/logs.db"
+    },
+    "rate_limits": {
+        "app": "20 per minute",
+        "predict": "10 per minute"
+    },
+    "security": {
+        "basic_auth_folders": [
+            "/peekaboo"
+        ]
+    }
+}

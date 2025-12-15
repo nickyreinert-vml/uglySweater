@@ -1,0 +1,606 @@
+/*
+future100.css
+Purpose:
+- Define typography, layout, and responsive behavior for the Future 100 UI.
+Main Sections:
+- Navigation, sections, pills, buttons, media queries.
+Dependent Files:
+- Referenced by templates/index.html and peekaboo.html.
+*/
+
+/* ==========================================================================
+   Webfont Integration
+   ========================================================================== */
+@font-face {
+    font-family: 'Snowflake Sans';
+    src: url('/static/fonts/SnowflakeSans-Light.woff2') format('woff2'),
+         url('/static/fonts/SnowflakeSans-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Snowflake Sans';
+    src: url('/static/fonts/SnowflakeSans-Book.woff2') format('woff2'),
+         url('/static/fonts/SnowflakeSans-Book.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Snowflake Sans';
+    src: url('/static/fonts/SnowflakeSans-Medium.woff2') format('woff2'),
+         url('/static/fonts/SnowflakeSans-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Snowflake Sans';
+    src: url('/static/fonts/SnowflakeSans-Bold.woff2') format('woff2'),
+         url('/static/fonts/SnowflakeSans-Bold.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* ==========================================================================
+   Variables
+   ========================================================================== */
+:root {
+    --yellow-section: #FDEA7A;
+    --pink-section: #ED6676;
+    --nav-height: 80px;
+    --footer-height: 300px;
+    --section-padding: 6rem;
+}
+
+/* ==========================================================================
+   Reset and Base Styles
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Snowflake Sans', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+body {
+    font-family: 'Snowflake Sans', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Offset content so fixed header doesn't overlap the page */
+html, body {
+    padding-top: var(--nav-height);
+}
+
+a#try-again{
+    color: #fff;
+}
+    
+/* ==========================================================================
+   Navigation Styles
+   ========================================================================== */
+.main-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--nav-height);
+    z-index: 1000;
+    background: #000;
+    border-bottom: 1px solid #4c4c4c;
+}
+
+.nav-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    padding: 0 2rem;
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    height: 24px;
+}
+
+.logo img {
+    height: 100%;
+    width: auto;
+}
+
+.main-nav {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+
+#noPredictionMessage a, #noPredictionMessage a {
+    color: #fff;
+}
+
+.main-nav a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    padding: 0.5rem 0;
+    transition: color 0.3s ease;
+    visibility: visible;
+}
+
+.main-nav a:hover {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* ==========================================================================
+   Section Common Styles
+   ========================================================================== */
+.section {
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.section-content {
+    position: relative;
+    z-index: 2;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    width: 100%;
+}
+
+.section-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  filter: brightness(0.8);
+}
+
+.background-icon {
+    position: absolute;
+    right: -5%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 600px;
+    height: auto;
+    opacity: 0.2;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.challenge-section .section-content,
+.industry-section .section-content {
+    position: relative;
+    z-index: 2;
+    padding: var(--nav-height) 2rem 2rem;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* ==========================================================================
+   Welcome Section Styles
+   ========================================================================== */
+.welcome-layout {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: 100%;
+    min-height: 100vh;
+}
+
+/* .welcome-image removed from templates; rules intentionally omitted */
+
+.welcome-content {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: var(--yellow-section);
+    padding: 4rem 2rem;
+    max-width: 100vw;
+}
+
+@media (max-width: 900px) {
+    .welcome-layout {
+        flex-direction: column;
+        min-height: auto;
+    }
+    .welcome-content {
+        width: 100vw;
+        margin-left: calc(50% - 50vw);
+        margin-right: calc(50% - 50vw);
+        padding: 2rem;
+    }
+    .background-icon {
+        display: none;
+    }
+}
+
+.welcome-content h1 {
+    font-size: 4.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 2;
+}
+
+.welcome-content .subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 2.5rem;
+    max-width: 600px;
+    position: relative;
+    z-index: 2;
+}
+
+/* ==========================================================================
+   Challenge Section Styles
+   ========================================================================== */
+.challenge-section {
+    position: relative;
+    width: 100vw;
+    min-height: 100vh;
+    color: #fff;
+    overflow: hidden;
+    background: #0d4d3a;
+    background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 25%, transparent 25%),
+                      linear-gradient(225deg, rgba(255, 255, 255, 0.04) 25%, transparent 25%),
+                      linear-gradient(45deg, rgba(255, 255, 255, 0.04) 25%, transparent 25%),
+                      linear-gradient(315deg, rgba(255, 255, 255, 0.04) 25%, #0d4d3a 25%);
+    background-size: 60px 60px;
+    padding: calc(var(--nav-height) + 2rem) 0 4rem;
+}
+
+.challenge-grid {
+    position: relative;
+    z-index: 2;
+    width: min(1100px, 100%);
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.challenge-header {
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto;
+}
+
+.challenge-header .eyebrow {
+    font-size: 0.95rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 1rem;
+}
+
+.challenge-header h2 {
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.challenge-subtitle {
+    font-size: 1.15rem;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.challenge-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+}
+
+.challenge-card {
+    background: rgba(3, 24, 18, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 32px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    min-height: 320px;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
+}
+
+.step-indicator {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #fdea7a;
+    color: #0d4d3a;
+    font-weight: 700;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.step-label {
+    font-size: 1.05rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.option-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 0.75rem;
+}
+
+.challenge-cta {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+    .challenge-section {
+        padding: calc(var(--nav-height) + 1rem) 0 3rem;
+    }
+
+    .challenge-card {
+        min-height: auto;
+        padding: 1.75rem;
+    }
+}
+
+/* ==========================================================================
+   Results Section Styles
+   ========================================================================== */
+.section-pink {
+    background-color: var(--pink-section);
+    padding: var(--nav-height) 0 var(--footer-height);
+    color: #fff;
+}
+
+.results-container {
+    margin: 1rem 0;
+    width: 80%;
+}
+
+.results-title {
+    font-size: min(3.5rem, 7vw);
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+
+.results-intro {
+    font-size: 1.25rem;
+    margin-bottom: 3rem;
+    max-width: 800px;
+}
+
+#waitingMessage {
+    font-size: 1.1rem;
+    opacity: 0.8;
+    text-align: left;
+    padding: 2rem 0;
+}
+
+.prediction-content {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+.prediction-content p {
+    margin-bottom: 0.5rem;
+}
+
+.results-cta-text {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+    font-weight: 700;
+}
+
+@media (max-width: 768px) {
+    .results-container {
+        width: 100%;
+        font-size: 0.9rem;
+    }
+}
+
+/* ==========================================================================
+   Option Card Styles
+   ========================================================================== */
+.option-card {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 18px;
+    padding: 1.25rem;
+    text-align: center;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: transform 0.2s ease, border 0.2s ease, background 0.2s ease;
+}
+
+.option-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255, 255, 255, 0.6);
+}
+
+.option-card.selected {
+    background: rgba(253, 234, 122, 0.2);
+    border-color: #fdea7a;
+    box-shadow: 0 12px 30px rgba(4, 18, 14, 0.35);
+}
+
+@media (max-width: 768px) {
+    .option-card {
+        font-size: 1rem;
+        padding: 1rem;
+    }
+}
+
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 1.1rem 2.75rem;
+    cursor: pointer;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+}
+
+.button.primary {
+    background: #fdea7a;
+    color: #0d4d3a;
+    box-shadow: 0 18px 38px rgba(0, 0, 0, 0.35);
+}
+
+.button.primary:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.button.primary:not(:disabled):hover {
+    transform: translateY(-2px);
+}
+
+.button.download-button {
+    background: #000;
+    color: #fff;
+    border-radius: 8px;
+    letter-spacing: normal;
+    text-transform: none;
+    padding: 1rem 2rem;
+}
+
+.button.download-button:hover {
+    transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   Footer Styles
+   ========================================================================== */
+
+
+
+/*
+.main-footer {
+    background: #000;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: var(--footer-height);
+}
+
+.footer-logo {
+    height: 24px;
+    width: auto;
+}
+
+.footer-content {
+    color: #fff;
+    font-size: 0.875rem;
+} */
+
+/* ==========================================================================
+   Utility Classes
+   ========================================================================== */
+.hidden {
+    display: none;
+}
+
+/* ==========================================================================
+   Media Queries
+   ========================================================================== */
+@media (max-width: 768px) {
+    :root {
+        --section-padding: 2rem;
+    }
+
+    /* Header */
+    .main-nav {
+        display: none;
+    }
+
+    /* Welcome Section */
+    .welcome-layout {
+        flex-direction: row;
+        flex-wrap: nowrap;
+    }
+
+    .welcome-content {
+        width: 100%;
+    }
+
+    .welcome-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .welcome-content .subtitle {
+        font-size: 1.25rem;
+    }
+
+    /* Sections */
+    .section h2 {
+        font-size: 2rem;
+    }
+
+    /* Option Grid */
+    .option-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Background Elements */
+    .background-icon {
+        width: 300px;
+        right: -20%;
+    }
+
+    /* Navigation */
+    .navigation-arrows {
+        right: 1rem;
+    }
+
+    .arrow {
+        width: 32px;
+        height: 32px;
+    }
+}
+
+@media (min-height: 900px) {
+    .option-grid {
+        gap: 1rem;
+    }
+}

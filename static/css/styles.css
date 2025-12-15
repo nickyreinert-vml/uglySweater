@@ -1,0 +1,415 @@
+/*
+styles.css
+Purpose:
+- Legacy fallback styles for generic components.
+Main Sections:
+- Typography resets, pill interactions, navigation helpers.
+Dependent Files:
+- Can be imported by future templates when needed.
+*/
+
+/* Basic style sheet definitions */
+
+body {
+  font-family: Arial, sans-serif;
+  color: #333;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #444;
+}
+
+p {
+  line-height: 1.6;
+}
+
+a {
+  color: #0066cc;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+header, footer {
+  background-color: #444;
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.pill-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.pill {
+  padding: 10px 20px;
+  border: 1px solid #ccc;
+  border-radius: 50px;
+  background-color: #f4f4f4;
+  cursor: pointer;
+  user-select: none;
+}
+
+.pill.selected {
+  background-color: #0066cc;
+  color: #fff;
+}
+
+select, textarea, button {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  background-color: #0066cc;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #005bb5;
+}
+
+textarea {
+  resize: none;
+}
+
+#waitingNotificationContainer {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    text-align: center;
+}
+
+#waitingNotification {
+    width: 3rem;
+    height: 3rem;
+    border: 0.4rem solid #f3f3f3;
+    border-top: 0.4rem solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+}
+
+#waitingMessage {
+    margin-top: 1rem;
+    font-size: 1rem;
+    color: #333;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.hero-image {
+  width: 100%; 
+  height: 100%; 
+  object-fit: cover;
+
+}
+/* Full-screen section styles */
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  height: 100%;
+}
+
+.main-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.main-header nav ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.main-header nav ul li {
+  margin-left: 2rem;
+}
+
+.main-header nav ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+.sections-container {
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.section {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(100%);
+}
+
+.section.active {
+  transform: translateY(0);
+}
+
+.section .content {
+  position: relative;
+  z-index: 2;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-top: 80px; /* Account for fixed header */
+}
+/* Update background overlay for split layout */
+.split-right .background-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, transparent 50%, rgba(255, 255, 255, 0.1) 100%);
+  z-index: 1;
+}
+
+/* .background-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  z-index: 1;
+} */
+
+.main-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 1rem;
+  text-align: center;
+}
+
+/* Section-specific background colors */
+#welcome { background-color: #FFD700; }
+#department { background-color: #FF69B4; }
+#industry { background-color: #4CAF50; }
+#problem { background-color: #2196F3; }
+#result { background-color: #9C27B0; }
+
+/* Navigation Arrows */
+.navigation-arrows {
+  position: fixed;
+  right: 2rem; /* Changed from left to right */
+  bottom: 7rem; /* Increased to be more visible above footer */
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  pointer-events: none;
+}
+
+.up-arrow {
+  position: fixed;
+  top: 5rem;
+  right: 2rem; /* Added right positioning for up arrow */
+}
+
+/* Rest of the arrow styles remain the same */
+.up-arrow,
+.down-arrow {
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  pointer-events: auto;
+  opacity: 0.6;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.up-arrow:hover,
+.down-arrow:hover {
+  opacity: 1;
+}
+
+.up-arrow {
+  position: fixed;
+  top: 5rem; /* Adjust based on your header height */
+}
+
+/* SVG styling */
+.navigation-arrows svg {
+  fill: currentColor;
+  color: #ffffff; /* Arrow color */
+  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.3));
+}
+
+/* Animation for arrows */
+@keyframes bounce {
+  0%, 100% {
+      transform: translateY(0);
+  }
+  50% {
+      transform: translateY(5px);
+  }
+}
+
+.down-arrow {
+  animation: bounce 2s infinite;
+}
+
+.up-arrow {
+  animation: bounce 2s infinite reverse;
+}
+
+/* Hide arrows based on section */
+.section[data-index="0"] .up-arrow {
+  display: none;
+}
+
+.section[data-index="4"] .down-arrow {
+  display: none;
+}
+
+/* Make arrows clickable */
+.navigation-arrows svg {
+  cursor: pointer;
+}
+
+/* Split layout styles */
+.split-container {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+}
+
+.split-left {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+.split-right {
+  flex: 1;
+  position: relative;
+  background-color: #FFD700; /* Yellow background */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.feature-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.content-wrapper {
+  position: relative;
+  z-index: 2;
+  padding: 2rem;
+  max-width: 80%;
+}
+
+.large-title {
+  font-size: 4rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  color: #444;
+}
+
+.teaser {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  color: #555;
+}
+
+.cta-link {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background-color: #333;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.cta-link:hover {
+  background-color: #444;
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .split-container {
+      flex-direction: column;
+  }
+
+  .split-left, .split-right {
+      flex: none;
+      height: 50vh;
+  }
+
+  .content-wrapper {
+      padding: 1rem;
+      text-align: center;
+  }
+
+  .large-title {
+      font-size: 3rem;
+  }
+}

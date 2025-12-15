@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="{{ language | default('en') }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ vocab.html.title | default('VML Ugly Sweater Teams Background Generator') | safe}}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/sweater.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.svg') }}" type="image/svg+xml">
+    <meta name="csrf-token" content="{{ csrf_token }}">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'nonce-{{ nonce }}'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.figma.com;">
+</head>
+<body>
+    <!-- Top Banner -->
+    <div class="top-banner">
+        <p>{{ vocab.html.banner | default('Lets unwrap that present…') | safe }}</p>
+    </div>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <div class="hero-line hero-line-1">
+                    <span class="hey-text">Hey!</span>
+                    <span class="psst-text">Psst...</span>
+                    <span style="font-size: 142px;">*</span>
+                </div>
+                <div class="hero-line hero-line-2">
+                    <span class="mezzo-text">MEZZO</span>
+                    <span class="mix-text">MIX</span>
+                </div>
+                <div class="hero-line hero-line-3">
+                    <span class="lets-text">LET'S</span>
+                    <span class="get-text">GET</span>
+                </div>
+                <div class="hero-line hero-line-4">
+                    <span class="festive-text">Festive</span>
+                    <span style="font-size: 187px; font-family: 'Baskervville', serif; font-style: italic;">!</span>
+                </div>
+            </div>
+            <div class="scroll-arrow">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                    <path d="M20 10L20 30M20 30L12 22M20 30L28 22" stroke="#1C1C1C" stroke-width="2"/>
+                </svg>
+            </div>
+        </section>
+
+        <!-- Selection Section -->
+        <section class="selection-section">
+            <div class="selection-content">
+                <div class="selection-header">
+                    <p class="selection-eyebrow">{{ vocab.html.eyebrow | default('VML has a gift for you') | safe }}</p>
+                    <h1 class="selection-title">{{ vocab.html.main_title | default('Get your knit sweater Teams background') | safe }} 🎅</h1>
+                    <p class="selection-subtitle">{{ vocab.html.subtitle | default('Just choose your personal style in the steps below to give your teams background a seasonal glow-up.') | safe }}</p>
+                </div>
+
+                <!-- Teams Preview -->
+                <div class="teams-preview">
+                    <div class="teams-preview-frame">
+                        <div class="teams-preview-bg">
+                            <img src="{{ url_for('static', filename='images/sweater/hero_bg.jpg') }}" alt="">
+                        </div>
+                        <div class="teams-preview-content">
+                            <img src="{{ url_for('static', filename='images/sweater/teams_preview.jpg') }}" alt="">
+                        </div>
+                        <div class="teams-icon">
+                            <img src="{{ url_for('static', filename='images/sweater/teams_icon.jpg') }}" alt="">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="selection-steps">
+                    <!-- Step 1: Color Theme -->
+                    <div class="selection-step">
+                        <div class="step-number">1.</div>
+                        <div class="step-content">
+                            <p class="step-label">{{ vocab.html.step_1 | default('Choose your festive color theme:') | safe }}</p>
+                            <div class="step-options" id="colorThemeOptions">
+                                <!-- Christmas Theme -->
+                                <div class="option-card" data-option="christmas">
+                                    <p class="option-card-title">Christmas Theme</p>
+                                    <div class="color-swatches">
+                                        <div class="color-swatch" style="background: #870505;"></div>
+                                        <div class="color-swatch" style="background: #094539;"></div>
+                                        <div class="color-swatch" style="background: #FFFFFF;"></div>
+                                    </div>
+                                </div>
+                                <p class="option-divider">or</p>
+                                <!-- Brand Colors -->
+                                <div class="option-card" data-option="brand">
+                                    <p class="option-card-title">Brand Colors</p>
+                                    <div class="color-swatches">
+                                        <div class="color-swatch" style="background: #C12413;"></div>
+                                        <div class="color-swatch" style="background: #DF5C10;"></div>
+                                        <div class="color-swatch" style="background: #FAD427;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Knit Style -->
+                    <div class="selection-step">
+                        <div class="step-number">2.</div>
+                        <div class="step-content">
+                            <p class="step-label">{{ vocab.html.step_2 | default('Choose your knit style:') | safe }}</p>
+                            <div class="step-options" id="knitStyleOptions">
+                                <!-- Chunky Knit -->
+                                <div class="option-card" data-option="chunky">
+                                    <p class="option-card-title">Chunky Knit</p>
+                                    <div class="knit-preview">
+                                        <img src="{{ url_for('static', filename='images/sweater/chunky_knit.jpg') }}" alt="Chunky Knit">
+                                    </div>
+                                </div>
+                                <p class="option-divider">or</p>
+                                <!-- Fair Isle Knit -->
+                                <div class="option-card" data-option="fair_isle">
+                                    <p class="option-card-title">Fair Isle Knit</p>
+                                    <div class="knit-preview">
+                                        <img src="{{ url_for('static', filename='images/sweater/fair_isle.jpg') }}" alt="Fair Isle Knit">
+                                    </div>
+                                </div>
+                                <p class="option-divider">or</p>
+                                <!-- Tacky Knit -->
+                                <div class="option-card" data-option="tacky">
+                                    <p class="option-card-title">Tacky Knit</p>
+                                    <div class="knit-preview">
+                                        <img src="{{ url_for('static', filename='images/sweater/tacky_knit.jpg') }}" alt="Tacky Knit">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Visual Elements -->
+                    <div class="selection-step">
+                        <div class="step-number">3.</div>
+                        <div class="step-content">
+                            <p class="step-label">{{ vocab.html.step_3 | default('Choose your visual elements:') | safe }}</p>
+                            <div class="step-options" id="visualElementOptions">
+                                <!-- Snowflakes -->
+                                <div class="option-card" data-option="snowflakes">
+                                    <p class="option-card-title">Snowflakes</p>
+                                    <div class="element-icon">
+                                        <img src="{{ url_for('static', filename='images/sweater/snowflake_icon.svg') }}" alt="Snowflakes">
+                                    </div>
+                                </div>
+                                <p class="option-divider">or</p>
+                                <!-- Fir Trees -->
+                                <div class="option-card" data-option="trees">
+                                    <p class="option-card-title">Fir Trees</p>
+                                    <div class="element-icon">
+                                        <img src="{{ url_for('static', filename='images/sweater/tree_icon.svg') }}" alt="Fir Trees">
+                                    </div>
+                                </div>
+                                <p class="option-divider">or</p>
+                                <!-- Brand Elements -->
+                                <div class="option-card" data-option="brand_elements">
+                                    <p class="option-card-title">Brand Elements</p>
+                                    <div class="element-icon">
+                                        <img src="{{ url_for('static', filename='images/sweater/brand_icon.svg') }}" alt="Brand Elements">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="selection-cta">
+                    <button id="generateButton" class="cta-button">
+                        {{ vocab.html.cta_button | default('Create Your Teams Background 🎁') | safe }}
+                    </button>
+                </div>
+
+                <p class="powered-by">{{ vocab.html.powered_by | default('powered by WPP open') | safe }}</p>
+            </div>
+        </section>
+
+        <!-- Tutorial Section -->
+        <section class="tutorial-section">
+            <div class="tutorial-header">
+                <h2 class="tutorial-title">{{ vocab.html.tutorial_title | default('From Download to Ho Ho Ho') | safe }}</h2>
+                <p class="tutorial-subtitle">{{ vocab.html.tutorial_subtitle | default('How to integrate the background images into MS Teams') | safe }}</p>
+            </div>
+
+            <div class="tutorial-steps">
+                <div class="tutorial-card">
+                    <p class="tutorial-card-text">{{ vocab.html.tutorial_step_1 | default('Generate and download the xmas-sweater background') | safe }}</p>
+                    <div class="tutorial-card-content">
+                        <div class="tutorial-step-number">1.</div>
+                        <div class="tutorial-image">
+                            <img src="{{ url_for('static', filename='images/sweater/tutorial_1.jpg') }}" alt="">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tutorial-card">
+                    <p class="tutorial-card-text">{{ vocab.html.tutorial_step_2 | default('Open Microsoft Teams → Enter a Call → Video effects and settings') | safe }}</p>
+                    <div class="tutorial-card-content">
+                        <div class="tutorial-step-number">2.</div>
+                        <div class="tutorial-image">
+                            <img src="{{ url_for('static', filename='images/sweater/tutorial_2.jpg') }}" alt="">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tutorial-card">
+                    <p class="tutorial-card-text">{{ vocab.html.tutorial_step_3 | default('Inside Video effects and settings → Choose »Add new« → Upload image from Computer') | safe }}</p>
+                    <div class="tutorial-card-content">
+                        <div class="tutorial-step-number">3.</div>
+                        <div class="tutorial-image">
+                            <img src="{{ url_for('static', filename='images/sweater/tutorial_3.jpg') }}" alt="">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tutorial-card">
+                    <p class="tutorial-card-text">{{ vocab.html.tutorial_step_4 | default('Select your custom xmas-sweater background → Click apply → Enjoy 🎅') | safe }}</p>
+                    <div class="tutorial-card-content">
+                        <div class="tutorial-step-number">4.</div>
+                        <div class="tutorial-image">
+                            <img src="{{ url_for('static', filename='images/sweater/tutorial_4.jpg') }}" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer Section -->
+        <section class="footer-section">
+            <div class="footer-content">
+                <div class="footer-heading">
+                    <span class="footer-heading-text">{{ vocab.html.footer_happy | default('Happy holidays') | safe }}</span>
+                    <span style="font-size: 49px;">❄</span>
+                </div>
+                <p class="footer-from">{{ vocab.html.footer_from | default('from your') | safe }}</p>
+                <div class="footer-agency">
+                    <span class="footer-agency-text">FAV</span>
+                    <div class="footer-agency-logo">
+                        <img src="{{ url_for('static', filename='images/sweater/vml_logo.svg') }}" alt="VML">
+                    </div>
+                    <span class="footer-agency-text">RITE</span>
+                </div>
+                <p class="footer-tagline">{{ vocab.html.footer_agency | default('agency') | safe }}</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Scripts -->
+    <script nonce="{{ nonce }}">
+        document.addEventListener('DOMContentLoaded', function() {
+            // Selection handling
+            const optionCards = document.querySelectorAll('.option-card');
+            const generateButton = document.getElementById('generateButton');
+            
+            let selections = {
+                colorTheme: null,
+                knitStyle: null,
+                visualElements: null
+            };
+
+            optionCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    const parentId = this.parentElement.id;
+                    const option = this.getAttribute('data-option');
+                    
+                    // Remove selected class from siblings
+                    const siblings = this.parentElement.querySelectorAll('.option-card');
+                    siblings.forEach(sibling => sibling.classList.remove('selected'));
+                    
+                    // Add selected class to clicked card
+                    this.classList.add('selected');
+                    
+                    // Update selections
+                    if (parentId === 'colorThemeOptions') {
+                        selections.colorTheme = option;
+                    } else if (parentId === 'knitStyleOptions') {
+                        selections.knitStyle = option;
+                    } else if (parentId === 'visualElementOptions') {
+                        selections.visualElements = option;
+                    }
+                    
+                    // Enable button if all selections made
+                    if (selections.colorTheme && selections.knitStyle && selections.visualElements) {
+                        generateButton.disabled = false;
+                    }
+                });
+            });
+
+            generateButton.addEventListener('click', function() {
+                if (selections.colorTheme && selections.knitStyle && selections.visualElements) {
+                    // Send request to backend
+                    fetch('/predict', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').content
+                        },
+                        body: JSON.stringify(selections)
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.status === 'success') {
+                            // Download the generated image
+                            window.location.href = data.data.download_url;
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

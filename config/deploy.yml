@@ -1,0 +1,48 @@
+service: furture1002025
+
+image: sdoering/vml-future100
+
+servers:
+  web:
+    - 116.203.36.121
+
+proxy:
+  ssl: true
+  # host: future100.vml.one
+  hosts:
+    - f100.vml.one
+    - future100.vmlgermany.com
+    - future100.vmlromania.ro
+    - future100vml.gr
+    - future100-vml.gr
+  app_port: 8081
+  response_timeout: 60
+
+
+registry:
+  server: ghcr.io
+  username:
+    - DOCKER_REGISTRY_TOKEN
+  password:
+    - DOCKER_REGISTRY_TOKEN
+
+builder:
+  arch: amd64
+
+env:
+  secret:
+    - OPENAI_API_KEY
+    - SECRET_KEY
+    - ASSISTANT_ID
+    - BASIC_AUTH_PASSWORD
+    - BASIC_AUTH_USERNAME
+
+  clear:
+    LIMIT_PREDICT: "10 per minute"
+    LIMIT_APP: "20 per minute"
+    DEBUG: false
+    DOWNLOAD_URL: "https://www.vml.com/insight/the-future-100-2025?utm_source=aiagent&utm_medium=web&utm_campaign=F10025&utm_id=Future+100+2025#s-2"
+    LOG_DB: "./.vault/logs.db"
+
+volumes:
+  - "./.vault:/app/.vault:rw"

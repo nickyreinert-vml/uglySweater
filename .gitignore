@@ -1,0 +1,17 @@
+future100.code-workspace
+.env
+docker-compose.yml
+config/.env
+config/.env.openai
+config/.env*
+docker-compose.yml.DS_Store
+The-Future-100-2024.pdf
+assets/100trends2025.json
+assets/test.json
+.vault/logs.db
+logs.db
+static/.DS_Store
+static/images/.DS_Store
+.DS_Store 2
+lib/__pycache__/database.cpython-313.pyc
+lib/__pycache__/helper.cpython-313.pyc

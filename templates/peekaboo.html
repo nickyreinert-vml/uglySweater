@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peekaboo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/future100.css') }}">
+</head>
+<body>
+    <h1>Peekaboo Data</h1>
+
+    <h2>Unique Sessions Per Day</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Day</th>
+                <th>Count</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for session in logs.unique_sessions_per_day %}
+            <tr>
+                <td>{{ session[0] }}</td>
+                <td>{{ session[1] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Unique Referrers</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Referrer</th>
+                <th>Count</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for referrer in logs.unique_referrers %}
+            <tr>
+                <td>{{ referrer[0] }}</td>
+                <td>{{ referrer[1] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Unique Prediction Requests Per Day</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Day</th>
+                <th>Count</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for request in logs.unique_requests_per_day %}
+            <tr>
+                <td>{{ request[0] }}</td>
+                <td>{{ request[1] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+    <h2>Overall Count of Industries Prediction Requests</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Industry</th>
+                <th>Count</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for industry in logs.industry_counts %}
+            <tr>
+                <td>{{ industry[0] }}</td>
+                <td>{{ industry[1] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Overall Count of Business Problems Prediction Requests</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Business Problem</th>
+                <th>Count</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for problem in logs.business_problem_counts %}
+            <tr>
+                <td>{{ problem[0] }}</td>
+                <td>{{ problem[1] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Count of Industries and Business Problems for Prediction Requests</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Industry</th>
+                <th>Business Problem</th>
+                <th>Count</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for request in logs.request_counts %}
+            <tr>
+                <td>{{ request[0] }}</td>
+                <td>{{ request[1] }}</td>
+                <td>{{ request[2] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Count of Industries and Business Problems for Downloads</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Industry</th>
+                <th>Business Problem</th>
+                <th>Count</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for download in logs.download_counts %}
+            <tr>
+                <td>{{ download[0] }}</td>
+                <td>{{ download[1] }}</td>
+                <td>{{ download[2] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Tampering Attempts</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Day</th>
+                <th>Industry</th>
+                <th>Business Problem</th>
+                <th>Count</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for tamper in logs.tampering %}
+            <tr>
+                <td>{{ tamper[0] }}</td>
+                <td>{{ tamper[1] }}</td>
+                <td>{{ tamper[2] }}</td>
+                <td>{{ tamper[3] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Backend Errors</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Day</th>
+                <th>Industry</th>
+                <th>Business Problem</th>
+                <th>Error</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for error in logs.errors %}
+            <tr>
+                <td>{{ error[0] }}</td>
+                <td>{{ error[1] }}</td>
+                <td>{{ error[2] }}</td>
+                <td>{{ error[3] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>

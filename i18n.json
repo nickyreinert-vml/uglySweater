@@ -1,0 +1,50 @@
+{
+    "en": {
+        "_language": "English",
+        "html": {
+            "title": "VML Ugly Sweater Teams Background Generator",
+            "banner": "Lets unwrap that present…",
+            "eyebrow": "VML HAS A GIFT FOR YOU",
+            "main_title": "GET YOUR KNIT SWEATER TEAMS BACKGROUND",
+            "subtitle": "Just choose your personal style in the steps below to give your teams background a seasonal glow-up.",
+            "step_1": "Choose your festive color theme:",
+            "step_2": "Choose your knit style:",
+            "step_3": "Choose your visual elements:",
+            "cta_button": "Create Your Teams Background 🎁",
+            "powered_by": "powered by WPP open",
+            "tutorial_title": "From Download to Ho Ho Ho",
+            "tutorial_subtitle": "How to integrate the background images into MS Teams",
+            "tutorial_step_1": "Generate and download the xmas-sweater background",
+            "tutorial_step_2": "Open Microsoft Teams → Enter a Call → Video effects and settings",
+            "tutorial_step_3": "Inside Video effects and settings → Choose »Add new« → Upload image from Computer",
+            "tutorial_step_4": "Select your custom xmas-sweater background → Click apply → Enjoy 🎅",
+            "footer_happy": "Happy holidays",
+            "footer_from": "FROM YOUR",
+            "footer_agency": "AGENCY"
+        }
+    },
+    "de": {
+        "_language": "German",
+        "html": {
+            "title": "VML Ugly Sweater Teams Hintergrund Generator",
+            "banner": "Lass uns das Geschenk auspacken…",
+            "eyebrow": "VML HAT EIN GESCHENK FÜR DICH",
+            "main_title": "HOLE DIR DEINEN GESTRICKTEN PULLOVER TEAMS HINTERGRUND",
+            "subtitle": "Wähle einfach deinen persönlichen Stil in den folgenden Schritten aus, um deinem Teams-Hintergrund ein festliches Upgrade zu geben.",
+            "step_1": "Wähle dein festliches Farbthema:",
+            "step_2": "Wähle deinen Strickstil:",
+            "step_3": "Wähle deine visuellen Elemente:",
+            "cta_button": "Erstelle deinen Teams-Hintergrund 🎁",
+            "powered_by": "powered by WPP open",
+            "tutorial_title": "Vom Download zu Ho Ho Ho",
+            "tutorial_subtitle": "So integrierst du die Hintergrundbilder in MS Teams",
+            "tutorial_step_1": "Generiere und lade den Weihnachtspullover-Hintergrund herunter",
+            "tutorial_step_2": "Öffne Microsoft Teams → Tritt einem Anruf bei → Videoeffekte und Einstellungen",
+            "tutorial_step_3": "In den Videoeffekten und Einstellungen → Wähle »Neu hinzufügen« → Bild vom Computer hochladen",
+            "tutorial_step_4": "Wähle deinen benutzerdefinierten Weihnachtspullover-Hintergrund → Klicke auf Anwenden → Viel Spaß 🎅",
+            "footer_happy": "Frohe Feiertage",
+            "footer_from": "VON DEINER",
+            "footer_agency": "AGENTUR"
+        }
+    }
+}
