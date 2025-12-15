@@ -5,7 +5,9 @@
             "localhost": "en"
         },
         "hero_backgrounds": {
-            "default": "images/sweater/hero_bg.jpg"
+            "default": "images/hero/hero_aida.png",
+            "aida": "images/hero/hero_aida.png",
+            "msft": "images/hero/hero_msft.png"
         },
         "i18n_file": "i18n.json"
     },

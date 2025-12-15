@@ -7,7 +7,7 @@ Dependent Files:
 - Relies on repositories, services, and helpers injected at creation.
 """
 
-from typing import Any, Dict
+from typing import Any, Dict, Union
 
 from flask import Response, jsonify, redirect, render_template
 
@@ -51,7 +51,7 @@ class UIController:
         self.config = config
         LOGGER.log_debug("UIController ready", depth=1)
 
-    def render_index(self, session_store, request_obj) -> Response:
+    def render_index(self, session_store, request_obj) -> Union[str, Response]:
         """Render landing page with localized vocab.
         Purpose: prepare conversation thread and per request security tokens.
         Input Data: Flask session and request instances.
@@ -61,16 +61,21 @@ class UIController:
         """
         if not self.prediction_service.ensure_thread(session_store):
             self.session_repo.log_error(session_store, "thread initialization failed", {})
-            return jsonify({"status": "error", "message": "thread creation failed"}), 500
+            resp = jsonify({"status": "error", "message": "thread creation failed"})
+            resp.status_code = 500
+            return resp
+        
         self.session_repo.log_session(session_store, request_obj)
         language = self.language_resolver.resolve(
             session_store, request_obj, self.config.get("language_routes", {})
         )
+
         vocab = self.i18n_repo.vocab_for(language)
         session_store["vocab"] = vocab
         csrf_token = self.csrf_protector.issue_token(session_store)
         nonce = generate_nonce()
         hero_background = self._resolve_hero_background(request_obj)
+        
         return render_template(
             "index.html",
             vocab=vocab,
@@ -80,18 +85,7 @@ class UIController:
             hero_background=hero_background,
         )
 
-    def download_report(self, session_store) -> Response:
-        """Redirect user to configured download URL.
-        Purpose: trigger analytics logging before redirecting externally.
-        Input Data: Flask session dict.
-        Output Data: HTTP redirect response.
-        Process: log download event then redirect to config download url.
-        Dependent Functions and Classes: session repository for logging.
-        """
-        self.session_repo.log_download(session_store)
-        return redirect(self.config.get("download_url", "/"))
-
-    def render_admin(self) -> Response:
+    def render_admin(self) -> str:
         """Render peekaboo admin page.
         Purpose: expose analytics tables for password protected view.
         Input Data: none beyond repository state.
@@ -115,7 +109,7 @@ class UIController:
     def _resolve_hero_background(self, request_obj) -> str:
         """Purpose: derive hero background path from bg query; Input Data: request args mapping; Output Data: static asset path string; Process: read bg param, normalize, match config mapping with default fallback; Dependent Functions and Classes: config dictionary."""
         backgrounds = self.config.get("hero_backgrounds", {})
-        default = backgrounds.get("default") or next(iter(backgrounds.values()), "images/background_section_1_left.jpg")
+        default = backgrounds.get("default") or next(iter(backgrounds.values()), "images/hero/background_section_1_left.jpg")
         raw_key = request_obj.args.get("bg", "")
         if not raw_key:
             return default

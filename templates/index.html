@@ -17,31 +17,7 @@
 
     <main>
         <!-- Hero Section -->
-        <section class="hero-section">
-            <div class="hero-content">
-                <div class="hero-line hero-line-1">
-                    <span class="hey-text">Hey!</span>
-                    <span class="psst-text">Psst...</span>
-                    <span style="font-size: 142px;">*</span>
-                </div>
-                <div class="hero-line hero-line-2">
-                    <span class="mezzo-text">MEZZO</span>
-                    <span class="mix-text">MIX</span>
-                </div>
-                <div class="hero-line hero-line-3">
-                    <span class="lets-text">LET'S</span>
-                    <span class="get-text">GET</span>
-                </div>
-                <div class="hero-line hero-line-4">
-                    <span class="festive-text">Festive</span>
-                    <span style="font-size: 187px; font-family: 'Baskervville', serif; font-style: italic;">!</span>
-                </div>
-            </div>
-            <div class="scroll-arrow">
-                <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-                    <path d="M20 10L20 30M20 30L12 22M20 30L28 22" stroke="#1C1C1C" stroke-width="2"/>
-                </svg>
-            </div>
+        <section class="hero-section" style="background-image: url('{{ url_for("static", filename=hero_background) }}');">
         </section>
 
         <!-- Selection Section -->
@@ -51,21 +27,6 @@
                     <p class="selection-eyebrow">{{ vocab.html.eyebrow | default('VML has a gift for you') | safe }}</p>
                     <h1 class="selection-title">{{ vocab.html.main_title | default('Get your knit sweater Teams background') | safe }} 🎅</h1>
                     <p class="selection-subtitle">{{ vocab.html.subtitle | default('Just choose your personal style in the steps below to give your teams background a seasonal glow-up.') | safe }}</p>
-                </div>
-
-                <!-- Teams Preview -->
-                <div class="teams-preview">
-                    <div class="teams-preview-frame">
-                        <div class="teams-preview-bg">
-                            <img src="{{ url_for('static', filename='images/sweater/hero_bg.jpg') }}" alt="">
-                        </div>
-                        <div class="teams-preview-content">
-                            <img src="{{ url_for('static', filename='images/sweater/teams_preview.jpg') }}" alt="">
-                        </div>
-                        <div class="teams-icon">
-                            <img src="{{ url_for('static', filename='images/sweater/teams_icon.jpg') }}" alt="">
-                        </div>
-                    </div>
                 </div>
 
                 <div class="selection-steps">
@@ -98,7 +59,7 @@
                         </div>
                     </div>
 
-                    <!-- Step 2: Knit Style -->
+                    {# <!-- Step 2: Knit Style -->
                     <div class="selection-step">
                         <div class="step-number">2.</div>
                         <div class="step-content">
@@ -129,11 +90,11 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> #}
 
                     <!-- Step 3: Visual Elements -->
                     <div class="selection-step">
-                        <div class="step-number">3.</div>
+                        <div class="step-number">2.</div>
                         <div class="step-content">
                             <p class="step-label">{{ vocab.html.step_3 | default('Choose your visual elements:') | safe }}</p>
                             <div class="step-options" id="visualElementOptions">

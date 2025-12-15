@@ -82,6 +82,9 @@ body {
 /* --- HERO SECTION --- */
 .hero-section {
   background: #F4F4ED;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   min-height: 888px;
   position: relative;
   display: flex;
@@ -239,7 +242,7 @@ body {
 }
 
 .selection-steps {
-  max-width: 770px;
+ max-width: 900px;
   margin: 0 auto 70px;
 }
 
@@ -407,22 +410,6 @@ body {
   position: relative;
   width: 100%;
   height: 100%;
-}
-
-.teams-preview-bg {
-  position: absolute;
-  top: 10px;
-  left: 0;
-  width: 480px;
-  height: 353px;
-  transform: rotate(8.741deg);
-}
-
-.teams-preview-bg img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 4px;
 }
 
 .teams-preview-content {
