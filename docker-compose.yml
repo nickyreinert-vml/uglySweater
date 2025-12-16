@@ -10,8 +10,10 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.services.web.loadbalancer.server.port=8080"
-      - "traefik.http.routers.uglysweater.rule=Host(`xmas.vmlgermany.com`)"
-      - "traefik.http.routers.uglysweater.entrypoints=websecure"
-      - "traefik.http.routers.uglysweater.tls.certresolver=letsencrypt"
+      - "traefik.http.routers.web.rule=Host(`xmas.vmlgermany.com`)"
+      # FORCE HTTP ENTRYPOINT ONLY
+      - "traefik.http.routers.web.entrypoints=http" 
+      # (Note: Coolify usually calls it 'http' or 'web'. Try 'http' first, if that fails, try 'web')
+  
     volumes:
         - ./.vault:/app/.vault
