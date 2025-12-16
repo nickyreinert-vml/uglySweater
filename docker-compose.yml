@@ -9,6 +9,15 @@ services:
       - "8080"
     volumes:
         - ./.vault:/app/.vault
+    networks:
+      - coolify
     labels:
       - "traefik.enable=true"
+      - "traefik.http.routers.uglysweater.rule=Host(`xmas.vmlgermany.com`)"
+      - "traefik.http.routers.uglysweater.entrypoints=websecure"
+      - "traefik.http.routers.uglysweater.tls.certresolver=letsencrypt"
       - "traefik.http.services.web.loadbalancer.server.port=8080"
+
+networks:
+  coolify:
+    external: true
