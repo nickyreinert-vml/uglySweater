@@ -5,7 +5,5 @@ services:
     command: gunicorn --bind 0.0.0.0:8080 app:app
     env_file:
       - .env
-    ports:
-      - "8082:8080"
     volumes:
       - ./.vault:/app/.vault
