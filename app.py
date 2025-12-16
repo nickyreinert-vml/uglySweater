@@ -56,8 +56,7 @@ def create_app() -> Flask:
 def _require_env_keys() -> None:
     """Purpose: ensure sensitive env vars exist; Input Data: os.environ; Output Data: none; Process: iterate required keys and assert presence; Dependent Functions and Classes: LOGGER for diagnostics."""
     keys = [
-        "OPENAI_API_KEY",
-        "ASSISTANT_ID",
+        "OPENAI_API_KEY"
         "SECRET_KEY",
         "BASIC_AUTH_USERNAME",
         "BASIC_AUTH_PASSWORD",
