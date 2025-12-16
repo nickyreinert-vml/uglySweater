@@ -17,6 +17,6 @@ COPY . .
 # USER appuser
 
 ENV PYTHONUNBUFFERED=1
-EXPOSE 8082
+EXPOSE 8080
 
 CMD ["gunicorn", "--bind", "0.0.0.0:8081", "app:app"]
