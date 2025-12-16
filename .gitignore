@@ -1,10 +1,8 @@
 future100.code-workspace
 .env
-docker-compose.yml
 config/.env
 config/.env.openai
 config/.env*
-docker-compose.yml.DS_Store
 The-Future-100-2024.pdf
 assets/100trends2025.json
 assets/test.json
