@@ -2,22 +2,10 @@ version: "3.9"
 services:
   web:
     build: .
-    command: gunicorn --bind 0.0.0.0:8080 app:app
+    command: sh -c "gunicorn --bind 0.0.0.0:${PORT:-8080} app:app"
     env_file:
       - .env
-    expose:
-      - "8080"
+    ports:
+      - "${PORT:-8080}:${PORT:-8080}"
     volumes:
         - ./.vault:/app/.vault
-    networks:
-      - coolify
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.uglysweater.rule=Host(`xmas.vmlgermany.com`)"
-      - "traefik.http.routers.uglysweater.entrypoints=websecure"
-      - "traefik.http.routers.uglysweater.tls.certresolver=letsencrypt"
-      - "traefik.http.services.web.loadbalancer.server.port=8080"
-
-networks:
-  coolify:
-    external: true
