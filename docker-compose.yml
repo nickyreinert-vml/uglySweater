@@ -6,6 +6,12 @@ services:
     env_file:
       - .env
     ports:
-      - "${PORT:-8001}:8080"
+      - "8001:8080"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.services.web.loadbalancer.server.port=8080"
+      - "traefik.http.routers.uglysweater.rule=Host(`xmas.vmlgermany.com`)"
+      - "traefik.http.routers.uglysweater.entrypoints=websecure"
+      - "traefik.http.routers.uglysweater.tls.certresolver=letsencrypt"
     volumes:
         - ./.vault:/app/.vault
