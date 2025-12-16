@@ -74,7 +74,6 @@ class ConfigLoader:
         security_cfg = data.get("security", {})
         merged = {
             "download_url": os.getenv("DOWNLOAD_URL", app_cfg.get("download_url", "")),
-            "language_routes": self._parse_lang_routes(app_cfg.get("language_routes", {})),
             "hero_backgrounds": self._build_backgrounds(app_cfg.get("hero_backgrounds", {})),
             "color_sets": app_cfg.get("color_sets", []),
             "icons": app_cfg.get("icons", []),
@@ -90,24 +89,6 @@ class ConfigLoader:
             )
         )
         return merged
-
-    def _parse_lang_routes(self, defaults: Dict[str, str]) -> Dict[str, str]:
-        """Decode optional LANG_ROUTES env string.
-        Purpose: allow runtime override using JSON payload in env.
-        Input Data: default dictionary from config.json.
-        Output Data: dictionary representing merged language routes.
-        Process: attempt json.loads on env var, fall back to defaults.
-        Dependent Functions and Classes: json library for parsing.
-        """
-        raw_routes = os.getenv("LANG_ROUTES")
-        if not raw_routes:
-            return defaults
-        try:
-            override = json.loads(raw_routes)
-            return {**defaults, **override}
-        except json.JSONDecodeError:
-            LOGGER.log_error("Invalid LANG_ROUTES override", depth=2)
-            return defaults
 
     def _build_rate_limits(self, defaults: Dict[str, str]) -> Dict[str, str]:
         """Assemble app rate limits.
