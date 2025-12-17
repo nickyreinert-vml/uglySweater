@@ -121,38 +121,39 @@ class UIController:
         Dependent Functions and Classes: send_from_directory, config dictionary.
         """
         team_key = request_obj.args.get("t", "").strip().lower()
-        color = request_obj.args.get("color", "").strip().lower()
-        icon = request_obj.args.get("icon", "").strip().lower()
+        color_code = request_obj.args.get("color", "").strip().upper()
+        icon_code = request_obj.args.get("icon", "").strip().upper()
         
-        if not team_key or not color or not icon:
+        if not team_key or not color_code or not icon_code:
             LOGGER.log_debug("Missing required parameters for background download", depth=2)
             return Response("Missing parameters", status=400)
         
-        color_sets = self.config.get("color_sets", [])
-        icons = self.config.get("icons", [])
+        color_sets = self.config.get("color_sets", {})
+        icons = self.config.get("icons", {})
         
-        if color not in color_sets or icon not in icons:
-            LOGGER.log_debug(f"Invalid color or icon: {color}, {icon}", depth=2)
+        valid_color_codes = set(color_sets.values())
+        valid_icon_codes = set(icons.values())
+        
+        if color_code not in valid_color_codes or icon_code not in valid_icon_codes:
+            LOGGER.log_debug(f"Invalid color or icon: {color_code}, {icon_code}", depth=2)
             return Response("Invalid parameters", status=400)
         
-        filename = f"{team_key}_{color}_{icon}.png"
-        static_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "static", "images", "downloads")
+        filename = f"{team_key}_{color_code}{icon_code}.png"
+        static_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "static", "images", "downloads", team_key)
         LOGGER.log_debug(f"Serving background: {filename}", depth=2)
         
         return send_from_directory(static_dir, filename, as_attachment=True)
 
     def _build_download_urls(self, team_key: str) -> Dict[str, Dict[str, str]]:
         """Purpose: construct download URLs for all color/icon combinations; Input Data: team key and config; Output Data: nested dict mapping colors and icons to URLs; Process: iterate all combinations and build URLs; Dependent Functions and Classes: config dictionary."""
-        color_sets = self.config.get("color_sets", [])
-        icons = self.config.get("icons", [])
+        color_sets = self.config.get("color_sets", {})
+        icons = self.config.get("icons", {})
         
         result = {}
-        for color in color_sets:
-            color_key = color_sets[color]
-            result[color_key] = {}
-            for icon in icons:
-                icon_key = icons[icon]
-                result[color_key][icon_key] = f"/download_background?t={team_key}&color={color_key}&icon={icon_key}"
+        for color_name, color_code in color_sets.items():
+            result[color_name] = {}
+            for icon_name, icon_code in icons.items():
+                result[color_name][icon_name] = f"/download_background?t={team_key}&color={color_code}&icon={icon_code}"
         
         return result
 
