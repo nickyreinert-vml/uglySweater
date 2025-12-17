@@ -8,7 +8,7 @@
         "icons": {"snowflakes": "S", "trees": "C", "brand": "B"},   
         "default_team": "vml",
         "hero_backgrounds": {
-            "_default": "images/hero/hero_default.png",
+            "_default": "hero_default.png",
             "aalexa": "hero_AMAZONALEXA.png",
             "aida": "hero_AIDA.png",    
             "ajobs": "hero_AMAZON_JOBS.png",
