@@ -622,6 +622,27 @@ body {
   line-height: 1;
 }
 
+/* --- DISCLAIMER SECTION --- */
+.disclaimer-section {
+  background: #1C1C1C;
+  padding: 40px 20px 60px;
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.disclaimer-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.disclaimer-text {
+  font-family: 'Snowflake Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.6;
+}
+
 /* --- RESPONSIVE --- */
 @media (max-width: 1200px) {
   .hero-section {
