@@ -92,7 +92,7 @@ body {
 /* --- HERO SECTION --- */
 .hero-section {
   background: #F4F4ED;
-  background-size: cover;
+  background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
   min-height: 888px;
