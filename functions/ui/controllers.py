@@ -148,9 +148,11 @@ class UIController:
         
         result = {}
         for color in color_sets:
-            result[color] = {}
+            color_key = color_sets[color]
+            result[color_key] = {}
             for icon in icons:
-                result[color][icon] = f"/download_background?t={team_key}&color={color}&icon={icon}"
+                icon_key = icons[icon]
+                result[color_key][icon_key] = f"/download_background?t={team_key}&color={color_key}&icon={icon_key}"
         
         return result
 
